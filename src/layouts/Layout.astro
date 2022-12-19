@@ -1,6 +1,5 @@
 ---
 export interface Props {
-	title: string;
 }
 
 const { title } = Astro.props;
@@ -16,7 +15,16 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<div class="toolbar h-40 shadow-sm">
+		<div class="toolbar py-4 shadow-sm">
+			<img src="/logo.png" class="mx-auto h-20 -mb-12" />
+		</div>
+		<div class="container mx-auto px-4 text-center text-white mt-10">
+			<h4 class="text-7xl">DIM</h4>
+			<h4 class="text-6xl"><small class="font-normal">for Stream Deck</small></h4>
+			<p class="mt-4 opacity-80 text-2xl font-light">An <b>Elgato Stream Deck</b> plugin to interact with <b>Destiny Item Manager</b> and <b>Destiny 2</b></p>
+			<div class="flex justify-center mt-4">
+				<img src="https://github.com/dim-stream-deck/com.dim.streamdeck/actions/workflows/build-plugin.yaml/badge.svg" />
+			</div>
 		</div>
 		<slot />
 	</body>
@@ -26,6 +34,9 @@ const { title } = Astro.props;
 	}
 	html {
 		font-family: system-ui, sans-serif;
+	}
+
+	body {
 		background: radial-gradient(circle at 50% 70px, hsl(240deg, 20%, 28%) 0%, hsl(240deg, 27%, 12%) 100%);
 	}
 	code {
@@ -34,5 +45,15 @@ const { title } = Astro.props;
 	}
 	.toolbar {
 		background-color: rgba(0, 0, 0, 0.25);
+	}
+	h4 {
+		font-weight: bold;
+		background: linear-gradient(#FF7F04, #e8a534);
+  		background-clip: text;
+  		-webkit-text-fill-color: transparent;
+	}
+	h3 {
+		font-weight: 500;
+		color: #FF7F04;
 	}
 </style>

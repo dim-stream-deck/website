@@ -1,98 +1,121 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import Setup from "../components/Setup.astro";
+
+const items = [
+	{
+		id: "loadout",
+		name: "Equip Loadout",
+		description: "Choose and equip any loadout.",
+		tags: ["loadout", "equipment"],
+		taps: {
+			single: "equip the loadout",
+			double: "unequip the loadout",
+			long: "unequip the loadout",
+		},
+	},
+	{
+		id: "search",
+		name: "Search",
+		description:
+			"Trigger the search with a custom query and multiple pages.",
+		tags: ["search", "items", "pullable"],
+		taps: {},
+	},
+	{
+		id: "refresh",
+		name: "Refresh DIM",
+		description: "Invoke the refresh action on DIM",
+		tags: ["ui"],
+		taps: {
+			single: "trigger action",
+		},
+	},
+	{
+		id: "farming",
+		name: "Farming Mode",
+		description: "Activate / Turn off the DIM farming mode",
+		tags: ["ui"],
+		taps: {
+			single: "enable/disable",
+		},
+	},
+	{
+		id: "app",
+		name: "Open DIM",
+		description: "Open a specific flavor (app/beta) DIM application",
+		tags: ["utility"],
+		taps: {
+			single: "open app",
+		},
+	},
+	{
+		id: "metrics",
+		name: "Metrics",
+		description:
+			"Show ranking progress (vanguard / crucible / gambit, etc) or other metrics value (seasonal rank, etc)",
+		tags: ["progress"],
+	},
+	{
+		id: "vault",
+		name: "Vault",
+		description: "Show currencies and vault counter",
+		tags: ["inventory", "counters"],
+	},
+	{
+		id: "pull-item",
+		name: "Pull/Equip Item",
+		description:
+			"Move/Equip weapons, armor or consumables from/to the vault or other characters",
+		taps: {
+			single: "pull an item",
+			long: "equip an item",
+		},
+		tags: ["items", "equipment"],
+	},
+	{
+		id: "postmaster",
+		name: "Postmaster",
+		description: "Open a specific flavor (app/beta) DIM application",
+		tags: ["utility", "counters"],
+		taps: {
+			single: "collect items",
+		},
+	},
+	{
+		id: "max-power",
+		name: "Max Power",
+		description: "Open a specific flavor (app/beta) DIM application",
+		tags: ["utility", "power", "leveling"],
+		taps: {
+			single: "maximize the current character",
+		},
+	},
+	{
+		id: "rotation",
+		name: "Rotation (WIP)",
+		description: "Show the daily/weekly rotation of some activities",
+		tags: ["utility", "daily"],
+	},
+];
 ---
 
-<Layout>
-	<main class="container sm:mx-auto mt-8 mx-4">
-		<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pb-8">
-			<Card
-				id="loadout"
-				name="Equip Loadout"
-				description="Choose and equip any loadout."
-				tags={["loadout", "equipment"]}
-				taps={{
-					single: "equip the loadout",
-					double: "unequip the loadout",
-					long: "unequip the loadout",
-				}}
-			/>
-			<Card
-				id="search"
-				name="Search"
-				description="Trigger the search with a custom query and multiple pages."
-				tags={["search", "items", "pullable"]}
-				taps={}
-			/>
-			<Card
-				id="refresh"
-				name="Refresh DIM"
-				description="Invoke the refresh action on DIM"
-				tags={["ui"]}
-				taps={{
-					single: "trigger action"
-				}}
-			/>
-			<Card
-				id="farming"
-				name="Farming Mode"
-				description="Activate / Turn off the DIM farming mode"
-				tags={["ui"]}
-				taps={{
-					single: "enable/disable"
-				}}
-			/>
-			<Card
-				id="app"
-				name="Open DIM"
-				description="Open a specific flavor (app/beta) DIM application"
-				tags={["utility"]}
-				taps={{
-					single: "open app"
-				}}
-	
-			/>
-			<Card
-				id="metrics"
-				name="Metrics"
-				description="Show ranking progress (vanguard / crucible / gambit, etc) or other metrics value (seasonal rank, etc)"
-				tags={["progress"]}
-			/>
-			<Card
-				id="vault"
-				name="Vault"
-				description="Show currencies and vault counter"
-				tags={["inventory", "counters"]} />
-			<Card
-				id="pull-item"
-				name="Pull/Equip Item"
-				description="Move/Equip weapons, armor or consumables from/to the vault or other characters"
-				taps={{
-					single: "pull an item",
-					long: "equip an item"
-				}}
-				tags={["items", "equipment"]} />
-			<!--
-			<Card
-				id="postmaster"
-				name="Postmaster"
-				description="Open a specific flavor (app/beta) DIM application"
-				tags={["utility", "counters"]} />
-			<Card
-				id="max-power"
-				name="Max Power"
-				description="Open a specific flavor (app/beta) DIM application"
-				tags={["utility", "power"]} /> -->
-			<Card
-				id="rotation"
-				name="Rotation (WIP)"
-				description="Show the daily/weekly rotation of some activities"
-				tags={["utility", "daily"]} />
-		/>
+<Layout title="DIM Stream Deck">
+	<main class="sm:container sm:mx-auto mx-4 mt-8">
+		<h4 class="mb-4 text-6xl">Preview</h4>
+		<h4 class="mb-4 text-6xl">Setup</h4>
+		<Setup />
+		<h4 class="mb-4 text-6xl">Actions</h4>
+		<div
+			class="grid grid-cols-1 gap-4 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:pb-4"
+		>
+			{items.map((item) => <Card {...item} />)}
 		</div>
+		<h4 class="mb-4 text-6xl">Support</h4>
+		<h4 class="mb-4 text-6xl">Contribute</h4>
+		<h4 class="mb-4 text-6xl">Donate</h4>
 	</main>
 </Layout>
 
-<style>
-
-</style>
+<style></style>

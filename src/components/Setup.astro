@@ -1,0 +1,21 @@
+---
+const items = [
+"Install the plugin",
+"Open the DIM settings and enable the elgato integration module",
+"Add an action on the deck and click the authorization button",
+"Confirm the authentication on DIM",
+"All done! ✨ You can now configure your actions!",
+]
+---
+
+<div>
+    {items.map((item, index) => (
+        <>
+        <li class="text-white list-none opacity-90 list-item px-4 py-2">{index+1}) {item}</li>
+         <div class="bg-white h-0.5 opacity-10 w-full"/>
+         </>
+     ))}
+</div>
+<style>
+
+</style>
