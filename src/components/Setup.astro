@@ -1,21 +1,33 @@
 ---
+import { YouTube } from "@astro-community/astro-embed-youtube";
+
 const items = [
-"Install the plugin",
-"Open the DIM settings and enable the elgato integration module",
-"Add an action on the deck and click the authorization button",
-"Confirm the authentication on DIM",
-"All done! ✨ You can now configure your actions!",
-]
+  ["Install the plugin"],
+  ["Open the DIM settings and enable the elgato integration module"],
+  ["Add an action on the deck and click the authorization button"],
+  ["Confirm the authentication on DIM"],
+  ["All done! ✨ You can now configure your actions!"],
+];
 ---
 
 <div>
-    {items.map((item, index) => (
-        <>
-        <li class="text-white list-none opacity-90 list-item px-4 py-2">{index+1}) {item}</li>
-         <div class="bg-white h-0.5 opacity-10 w-full"/>
-         </>
-     ))}
+  <div class="flex flex-col sm:flex-row justify-between">
+    <div class="flex-1">
+      {
+        items.map((item, index) => (
+          <>
+            <div class="flex flex-col align-middle">
+              <div class="text-white list-none opacity-90 list-item px-4 py-4">
+                {index + 1}) {item[0]}
+              </div>
+            </div>
+            <div class="bg-white h-0.5 opacity-10 w-full" />
+          </>
+        ))
+      }
+    </div>
+    <div class="flex-1 mt-4 mb-8 sm:mt-0 sm:ml-8">
+      <YouTube id="ph32r0P5pHY" params="loop=1" />
+    </div>
+  </div>
 </div>
-<style>
-
-</style>
