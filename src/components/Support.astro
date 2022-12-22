@@ -1,33 +1,40 @@
-<div class="flex justify-evenly items-center discord shadow-sm my-4 py-8 relative overflow-hidden">
-    <img src="/discord-mascot.webp" class="ml-4 mr-5 sm:mr-4" />
-    <div>
-      <h1 class="text-4xl md:text-5xl mr-6 font-bold">DISCORD SERVER</h1>
-      <div class="text-white opacity-70 italic text-lg">Support, questions, issues, updates and new ideas!</div>
-      <button class="mt-2 text-white cursor-pointer px-4 py-1 text-sm font-bold rounded-md border-0">JOIN</button>
+<div
+  class="flex justify-evenly items-center discord shadow-sm my-4 py-8 relative overflow-hidden"
+>
+  <img src="/discord-mascot.webp" class="ml-4 mr-5 sm:mr-4" />
+  <div>
+    <h1 class="text-4xl md:text-5xl mr-6 font-bold">DISCORD SERVER</h1>
+    <div class="text-white opacity-70 italic text-lg">
+      Support, questions, issues, updates and new ideas!
     </div>
+    <button
+      class="mt-2 text-white cursor-pointer px-4 py-1 text-sm font-bold rounded-md border-0"
+      >JOIN</button
+    >
+  </div>
 </div>
 
 <style>
-.discord {
+  .discord {
     border: 3px solid var(--dim);
     border-image: linear-gradient(to right, var(--dim), var(--accent)) 1;
-}
-.discord::after {
-  content: "";
-  position: absolute;
-  width: 200%;
-  height: 300%;
-  top: 20%;
-  right: 0;
-  z-index: -1;
-  background-image: url("/discord-bg.webp");
-  transform: rotate(-15deg);
-  opacity: 0.10;
-}
-.discord h1 {
-  color: var(--dim);
-}
-.discord button {
-  background: linear-gradient(to right, var(--dim), var(--accent));
-}
+  }
+  .discord::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 300%;
+    top: 20%;
+    right: 0;
+    z-index: -1;
+    background-image: url("/discord-bg.webp");
+    transform: rotate(-15deg);
+    opacity: 0.1;
+  }
+  .discord h1 {
+    color: var(--dim);
+  }
+  .discord button {
+    background: linear-gradient(to right, var(--dim), var(--accent));
+  }
 </style>

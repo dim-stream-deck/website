@@ -3,7 +3,9 @@ import { YouTube } from "@astro-community/astro-embed-youtube";
 
 const items = [
   ["Install the plugin"],
-  ["Open the <b>DIM settings</b> and enable the <b>Elgato Stream Deck</b> integration module"],
+  [
+    "Open the <b>DIM settings</b> and enable the <b>Elgato Stream Deck</b> integration module",
+  ],
   ["Add an action on the deck and click the <b>Authorize</b> button"],
   ["Confirm the <b>Authentication notification</b> on DIM"],
   ["<b>All done!</b> ✨ You can now configure your actions!"],
@@ -18,7 +20,7 @@ const items = [
           <>
             <div class="flex flex-col align-middle">
               <div class="text-white list-none opacity-90 list-item px-4 py-4">
-                {index + 1}) <span set:html={item[0]}/>
+                {index + 1}) <span set:html={item[0]} />
               </div>
             </div>
             <div class="bg-white h-0.5 opacity-10 w-full" />
@@ -27,14 +29,14 @@ const items = [
       }
     </div>
     <div class="flex-1 flex mt-4 mb-8 lg:mt-0 lg:ml-8">
-      <YouTube id="ph32r0P5pHY" />    
+      <YouTube id="ph32r0P5pHY" />
     </div>
   </div>
 </div>
 
 <style>
-    lite-youtube {
-        width: 100%;
-        max-width: 100%;
-    }
+  lite-youtube {
+    width: 100%;
+    max-width: 100%;
+  }
 </style>
