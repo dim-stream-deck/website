@@ -4,12 +4,14 @@
   <img src="/discord-mascot.webp" class="ml-4 mr-5 sm:mr-4" />
   <div>
     <h1 class="text-4xl md:text-5xl mr-6 font-bold">DISCORD SERVER</h1>
-    <div class="text-white opacity-70 italic text-lg">
+    <div class="text-white opacity-70 italic text-lg mb-2">
       Support, questions, issues, updates and new ideas!
     </div>
-    <button
-      class="mt-2 text-white cursor-pointer px-4 py-1 text-sm font-bold rounded-md border-0"
-      >JOIN</button
+    <a
+      href={import.meta.env.DISCORD_INVITE_URL}
+      target="_blank"
+      class="text-white cursor-pointer px-4 py-1 text-sm font-bold rounded-md border-0"
+      >JOIN</a
     >
   </div>
 </div>
@@ -34,7 +36,7 @@
   .discord h1 {
     color: var(--dim);
   }
-  .discord button {
+  .discord a {
     background: linear-gradient(to right, var(--dim), var(--accent));
   }
 </style>
