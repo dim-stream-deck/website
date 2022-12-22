@@ -13,6 +13,18 @@ const items = [
 ---
 
 <div>
+
+    <div class="bg-[#0f1c7c] inline-flex mt-4 mb-2 text-white rounded-lg cursor-pointer hover:shadow-md">
+      <div class="flex justify-center items-center p-2 rounded-l-lg bg-[rgba(0,0,0,0.4)]">
+        <img class="m-1" width={48} src="/elgato.webp" />
+      </div>
+      <div class="flex flex-col justify-center p-2 pl-4">
+        <span class="font-medium">Install the plugin</span>
+        <span class="block opacity-50">com.dim.streamdeck</span>
+      </div>
+    </div>
+  </div>
+
   <div class="flex flex-col lg:flex-row justify-between">
     <div class="flex-1">
       {
@@ -21,6 +33,7 @@ const items = [
             <div class="flex flex-col align-middle">
               <div class="text-white list-none opacity-90 list-item px-4 py-4">
                 {index + 1}) <span set:html={item[0]} />
+              </div>
               </div>
             </div>
             <div class="bg-white h-0.5 opacity-10 w-full" />
