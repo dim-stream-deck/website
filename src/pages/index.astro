@@ -103,16 +103,18 @@ const items = [
 
 <Layout>
   <main class="sm:container sm:mx-auto mx-4 mt-8">
-    <h4 class="mb-4 text-6xl font-medium">Preview</h4>
-    <h4 class="mb-4 text-6xl font-medium">Installation & Setup</h4>
+    <h4 class="mb-4 text-6xl font-medium text-center md:text-left">Preview</h4>
+    <h4 class="mb-4 text-6xl font-medium text-center md:text-left">
+      Installation & Setup
+    </h4>
     <Setup />
-    <h4 class="mb-4 text-6xl font-medium">Actions</h4>
+    <h4 class="mb-5 text-6xl font-medium text-center md:text-left">Actions</h4>
     <div
       class="grid grid-cols-1 gap-4 xs:grid-cols-2 xs:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:pb-4"
     >
       {items.map((item) => <Card {...item} />)}
     </div>
     <Support />
-    <h4 class="mb-4 text-6xl font-medium">Donate</h4>
+    <h4 class="mb-4 text-6xl font-medium text-center md:text-left">Donate</h4>
   </main>
 </Layout>
