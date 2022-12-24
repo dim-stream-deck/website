@@ -1,6 +1,16 @@
 ---
 import Card from "./Card.astro";
 const items = [
+{
+    id: "pull-item",
+    name: "Pull/Equip Item",
+    description: "Move (or equip) items between characters and vault.",
+    taps: {
+      single: "pull an item",
+      long: "equip an item",
+    },
+    tags: ["items", "equipment"],
+  },
   {
     id: "loadout",
     name: "Equip Loadout",
@@ -11,16 +21,6 @@ const items = [
       double: "unequip the loadout",
       long: "unequip the loadout",
     },
-  },
-  {
-    id: "pull-item",
-    name: "Pull/Equip Item",
-    description: "Move (or equip) items between characters and vault.",
-    taps: {
-      single: "pull an item",
-      long: "equip an item",
-    },
-    tags: ["items", "equipment"],
   },
   {
     id: "search",
@@ -41,12 +41,12 @@ const items = [
     },
   },
   {
-    id: "farming",
-    name: "Farming Mode",
-    description: "Turn on/off the DIM farming mode.",
-    tags: ["ui"],
+    id: "randomize",
+    name: "Randomize Character",
+    description: "Randomize current character loadout (weapons only / full loadout)",
+    tags: ["items", "equipment"],
     taps: {
-      single: "enable/disable",
+      single: "trigger randomizer",
     },
   },
   {
@@ -57,13 +57,6 @@ const items = [
     taps: {
       single: "open webapp",
     },
-  },
-  {
-    id: "metrics",
-    name: "Metrics",
-    description:
-      "Show ranking progress (vanguard, crucible, etc) or other metrics.",
-    tags: ["progress"],
   },
   {
     id: "vault",
@@ -81,12 +74,28 @@ const items = [
     },
   },
   {
+    id: "metrics",
+    name: "Metrics",
+    description:
+      "Show ranking progress (vanguard, crucible, etc) or other metrics.",
+    tags: ["progress"],
+  },
+  {
     id: "max-power",
     name: "Max Power",
     description: "Open a specific flavor (app/beta) DIM application.",
     tags: ["utility", "power", "leveling"],
     taps: {
       single: "maximize the current character",
+    },
+  },
+  {
+    id: "farming",
+    name: "Farming Mode",
+    description: "Turn on/off the DIM farming mode.",
+    tags: ["ui"],
+    taps: {
+      single: "enable/disable",
     },
   },
   {
