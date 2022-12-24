@@ -4,14 +4,25 @@ import Setup from "../components/Setup.astro";
 import Support from "../components/Support.astro";
 import Actions from "../components/Actions.astro";
 import Donate from "../components/Donate.astro";
+import { YouTube } from "@astro-community/astro-embed-youtube";
 ---
 
 <Layout>
-  <main class="sm:container sm:mx-auto mx-4 mt-8">
+  <main class="sm:container sm:mx-auto mx-4 mt-3">
     <h4 class="mb-4 text-6xl font-medium text-center md:text-left">Preview</h4>
+    <div class="mb-4">
+      <YouTube id="ozIY1Ucgm7U" poster="https://i.ytimg.com/vi/ozIY1Ucgm7U/maxres1.jpg" />
+    </div>
     <Setup />
     <Actions />
     <Support />
     <Donate />
   </main>
 </Layout>
+
+<style>
+  lite-youtube {
+    width: 100%;
+    max-width: 100%;
+  }
+</style>
