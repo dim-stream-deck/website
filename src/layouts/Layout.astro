@@ -1,5 +1,9 @@
 ---
+export interface Props {
+  path: string;
+}
 const title = "DIM Stream Deck | v2.0.0";
+const { path } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -9,6 +13,16 @@ const title = "DIM Stream Deck | v2.0.0";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
+    <meta property="og:title" content="The Rock" />
+    <meta property="og:type" content={title} />
+    <meta
+      property="og:url"
+      content={`https://dimstreamdeck.vercel.app/${path}`}
+    />
+    <meta
+      property="og:image"
+      content="https://dimstreamdeck.vercel.app/meta.png"
+    />
     <meta
       name="description"
       content="Stream Deck plugin for Destiny Item Manager"
