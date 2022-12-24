@@ -3,6 +3,7 @@ export interface Props {
   path: string;
 }
 const title = "DIM Stream Deck";
+const description = "Stream Deck plugin for Destiny Item Manager";
 const { path } = Astro.props;
 ---
 
@@ -16,6 +17,11 @@ const { path } = Astro.props;
     <meta property="og:title" content={title} />
     <meta property="og:type" content="website" />
     <meta
+      name="keywords"
+      content="Elgato Stream Deck, Destiny 2, Destiny Item Manager, Rust"
+    />
+    <meta name="author" content="Francesco Saverio Cannizzaro" />
+    <meta
       property="og:url"
       content={`https://dimstreamdeck.vercel.app/${path}`}
     />
@@ -23,10 +29,8 @@ const { path } = Astro.props;
       property="og:image"
       content="https://dimstreamdeck.vercel.app/meta.png"
     />
-    <meta
-      name="description"
-      content="Stream Deck plugin for Destiny Item Manager"
-    />
+    <meta name="description" content={description} />
+    <meta name="og:description" content={description} />
     <title>{title}</title>
   </head>
   <body>
