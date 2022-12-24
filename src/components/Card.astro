@@ -19,9 +19,9 @@ const tapMapping = {
   single: 'single tap',
   double: 'double tap',
   long: 'long press',
-}
+};
 
-const entries = Object.entries(taps);
+const entries = Object.entries(taps) as [keyof Taps, string][];
 ---
 
 <div
@@ -39,11 +39,11 @@ const entries = Object.entries(taps);
       {
         entries.length > 0 && (
           <>
-            <div class="w-full h-0.5 mb-4 mt-4 bg-white opacity-5" />
+            <div class="table w-full h-0.5 mb-4 mt-4 bg-white opacity-5" />
             {entries.map(([type, description]) => (
-              <div class="flex text-left">
-                <span class="text-white font-bold w-16">{tapMapping[type]}</span>
-                <span class="text-white opacity-80">{description}</span>
+              <div class="table-row text-left mb-1">
+                <span class="table-cell text-white font-bold">{tapMapping[type]}</span>
+                <span class="table-cell text-white opacity-80 flex-1 pl-3">{description}</span>
               </div>
             ))}
             <div class="w-full h-0.5 mb-4 mt-4 bg-white opacity-5" />
@@ -53,23 +53,16 @@ const entries = Object.entries(taps);
     </div>
   </div>
   <div class="px-6 pb-2">
-    <div class="my-2">
+    <div>
       {
         tags.map((tag) => (
-          <span class="inline-block border-2 border-orange-500 text-orange-400  rounded-full px-3 py-1 text-sm font-semibold mr-2">
+          <span class="inline-block border-2 border-orange-500 text-orange-400 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">
             #{tag}
           </span>
         ))
       }
     </div>
   </div>
-  <!--
-  <div class="px-2 pb-2">
-    <button class="w-full text-white px-3 py-1 text-sm mt-2"
-      >View in action</button
-    >
-  </div>
-  -->
 </div>
 <style>
   .card {
@@ -77,13 +70,5 @@ const entries = Object.entries(taps);
   }
   .card img:first-of-type {
     border-color: #222;
-  }
-  button {
-    background: rgba(255, 255, 255, 0.25);
-    transition: all 0.2s ease-in-out;
-  }
-  button:hover {
-    background-color: var(--accent);
-    color: #212121;
   }
 </style>
