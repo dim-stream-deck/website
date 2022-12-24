@@ -4,8 +4,14 @@ import Layout from "../layouts/Layout.astro";
 const changes = [
   {
     version: "2.0.0",
-    date: "2022/12",
-    changes: ["Rust porting", "New UI", "New authentication"],
+    date: "December 2022",
+    changes: [
+      "<b>Rust</b> porting",
+      "New UI",
+      "New authentication",
+      "New settings",
+      "Init for future actions",
+    ],
   },
 ];
 ---
@@ -23,7 +29,7 @@ const changes = [
             </div>
             <ul class="mb-4 divide-y divide-slate-700">
               {change.changes.map((change) => (
-                <li class="text-white py-1">- {change}</li>
+                <li class="text-white py-1" set:html={`- ${change}`} />
               ))}
             </ul>
           </div>
