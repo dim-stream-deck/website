@@ -1,5 +1,7 @@
-<div
-  class="flex justify-evenly items-center discord shadow-sm my-4 py-8 relative overflow-hidden"
+<a
+  href={import.meta.env.DISCORD_INVITE_URL}
+  target="_blank"
+  class="flex justify-evenly items-center discord shadow-sm my-4 py-8 relative cursor-pointer hover:bg-[#ff7f04]/10"
 >
   <img src="/discord-mascot.webp" class="ml-4 mr-5 sm:mr-4" />
   <div>
@@ -7,14 +9,13 @@
     <div class="text-white opacity-70 italic text-lg mb-2">
       Support, questions, issues, updates and new ideas!
     </div>
-    <a
-      href={import.meta.env.DISCORD_INVITE_URL}
-      target="_blank"
-      class="text-white cursor-pointer px-4 py-1 text-sm font-bold rounded-md border-0"
-      >JOIN</a
+    <div
+      class="text-white cursor-pointer px-4 py-1 text-sm font-medium rounded-md border-0 join inline-block"
     >
+      JOIN
+    </div>
   </div>
-</div>
+</a>
 
 <style>
   .discord {
@@ -36,7 +37,7 @@
   .discord h1 {
     color: var(--dim);
   }
-  .discord a {
+  .discord .join {
     background: linear-gradient(to right, var(--dim), var(--accent));
   }
 </style>
