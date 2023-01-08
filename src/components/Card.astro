@@ -16,16 +16,18 @@ export interface Props {
 const { name, description, id, tags = [], taps = {} } = Astro.props;
 
 const tapMapping = {
-  single: 'single tap',
-  double: 'double tap',
-  long: 'long press',
+  single: "single tap",
+  double: "double tap",
+  long: "long press",
 };
 
 const entries = Object.entries(taps) as [keyof Taps, string][];
 ---
 
 <div
-  class="rounded overflow-hidden shadow-sm card flex flex-col justify-between"
+  class={`rounded overflow-hidden shadow-sm card flex flex-col justify-between ${
+    name.includes("WIP") ? "opacity-50" : ""
+  }`}
 >
   <div class="px-6 py-4">
     <div class="flex items-center">
@@ -42,8 +44,12 @@ const entries = Object.entries(taps) as [keyof Taps, string][];
             <div class="table w-full h-0.5 mb-4 mt-4 bg-white opacity-5" />
             {entries.map(([type, description]) => (
               <div class="table-row text-left mb-1">
-                <span class="table-cell text-white font-bold">{tapMapping[type]}</span>
-                <span class="table-cell text-white opacity-80 flex-1 pl-3">{description}</span>
+                <span class="table-cell text-white font-bold">
+                  {tapMapping[type]}
+                </span>
+                <span class="table-cell text-white opacity-80 flex-1 pl-3">
+                  {description}
+                </span>
               </div>
             ))}
             <div class="w-full h-0.5 mb-4 mt-4 bg-white opacity-5" />

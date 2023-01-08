@@ -1,4 +1,42 @@
 ---
+import { URLSearchParams } from "url";
+
+interface Patron {
+  name: string;
+  tier?: string;
+}
+
+const headers = {
+  Authorization: "Bearer " + process.env.PATREON_TOKEN,
+};
+
+const fields = new URLSearchParams({
+  include: ["currently_entitled_tiers"],
+  "fields[member]": ["full_name", "patron_status"],
+  "fields[tier]": ["title"],
+});
+
+const usersRes = await fetch(
+  `https://www.patreon.com/api/oauth2/v2/campaigns/${process.env.PATREON_ID}/members?${fields}`,
+  { headers }
+);
+
+const { data, included } = await usersRes.json();
+
+const tiers = Object.fromEntries(
+  included.map((it: any) => [it.id, it.attributes.title])
+);
+
+const sorting = ["8787051", "8933196", "8787043", undefined];
+
+const patrons: Patron[] = data.map((it: any) => ({
+  name: it.attributes.full_name,
+  tier: it.relationships.currently_entitled_tiers.data[0]?.id,
+}));
+
+patrons.sort((a, b) =>
+  sorting.indexOf(a.tier) > sorting.indexOf(b.tier) ? 1 : -1
+);
 ---
 
 <h4 class="mb-4 text-6xl font-medium text-center md:text-left">Donate</h4>
@@ -29,4 +67,35 @@
       >Support me on <span class="font-bold ml-1">Ko-fi</span>
     </span>
   </a>
+</div>
+
+<h4 class="mb-2 mb-6 text-6xl font-medium text-center md:text-left">
+  Supporters :)
+</h4>
+
+<div
+  class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-6"
+>
+  {
+    patrons
+      .filter((it) => it.tier)
+      .map((it) => (
+        <div class="rounded-lg px-4 py-3 bg-[#e8a534]/5 flex flex-col justify-between items-start">
+          <span class="text-2xl font-medium text-[var(--dim)]">{it.name}</span>
+          <div class="text-white/50">
+            {it.tier ? tiers[it.tier] : "previous supporter"}
+          </div>
+        </div>
+      ))
+  }
+  {
+    patrons
+      .filter((it) => !it.tier)
+      .map((it) => (
+        <div class="rounded-lg px-4 py-3 bg-[#e8a534]/5 flex flex-col justify-between items-start opacity-40">
+          <span class="text-2xl font-medium text-[var(--dim)]">{it.name}</span>
+          <div class="text-white/50">previous supporter</div>
+        </div>
+      ))
+  }
 </div>
