@@ -18,24 +18,26 @@ const fields = new URLSearchParams({
 
 const usersRes = await fetch(
   `https://www.patreon.com/api/oauth2/v2/campaigns/${process.env.PATREON_ID}/members?${fields}`,
-  { headers }
+  { headers },
 );
 
 const { data, included } = await usersRes.json();
 
 const tiers = Object.fromEntries(
-  included.map((it: any) => [it.id, it.attributes.title])
+  included.map((it: any) => [it.id, it.attributes.title]),
 );
 
 const sorting = ["8787051", "8933196", "8787043", undefined];
 
-const patrons: Patron[] = data.map((it: any) => ({
-  name: it.attributes.full_name,
-  tier: it.relationships.currently_entitled_tiers.data[0]?.id,
-}));
+const patrons: Patron[] = data
+  .map((it: any) => ({
+    name: it.attributes.full_name,
+    tier: it.relationships.currently_entitled_tiers.data[0]?.id,
+  }))
+  .filter((it: Patron) => it.tier !== "free");
 
 patrons.sort((a, b) =>
-  sorting.indexOf(a.tier) > sorting.indexOf(b.tier) ? 1 : -1
+  sorting.indexOf(a.tier) > sorting.indexOf(b.tier) ? 1 : -1,
 );
 ---
 

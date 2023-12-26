@@ -64,6 +64,9 @@ const items = [
     name: "Vault",
     description: "Show currencies and vault counter.",
     tags: ["inventory", "counters"],
+    taps: {
+      single: "cycle vault items",
+    },
   },
   {
     id: "postmaster",
@@ -80,6 +83,9 @@ const items = [
     description:
       "Show ranking progress (vanguard, crucible, etc) or other metrics.",
     tags: ["progress"],
+    taps: {
+      single: "cycle metrics",
+    },
   },
   {
     id: "max-power",
@@ -100,14 +106,8 @@ const items = [
     },
   },
   {
-    id: "rotation",
-    name: "Rotation (WIP)",
-    description: "Show the daily/weekly rotation of some activities.",
-    tags: ["utility", "daily"],
-  },
-  {
-    id: "rotation",
-    name: "Solo Mode (WIP)",
+    id: "solo-mode",
+    name: "Solo Mode",
     description: 'Enable/disable the "Solo" Mode',
     tags: ["utility", "matchmaking"],
     taps: {
@@ -115,12 +115,13 @@ const items = [
     },
   },
   {
-    id: "rotation",
-    name: "Checkpoints (WIP)",
-    description: "Copy an activity checkpoint and customize /join command",
+    id: "checkpoint",
+    name: "Checkpoint",
+    description:
+      "Copy the user handle of checkpoint and customize chat command",
     tags: ["utility", "cp"],
     taps: {
-      single: "Copy the checkpoint",
+      single: "Copy the join command",
     },
   },
 ];
