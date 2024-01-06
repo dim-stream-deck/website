@@ -1,4 +1,5 @@
 ---
+// @ts-ignore
 import { YouTube } from "@astro-community/astro-embed-youtube";
 
 const items = [
@@ -11,29 +12,16 @@ const items = [
 ];
 ---
 
-<h4 class="mb-1 text-6xl font-medium text-center md:text-left">
-  Installation & Setup
+<h4 class="mb-1 text-5xl font-medium text-center md:text-left">
+  Getting Started
 </h4>
-<div>
-  <div class="flex justify-center sm:justify-start">
-    <a
-      href="https://apps.elgato.com/plugins/com.dim.streamdeck"
-      target="_blank"
-      class="bg-[#0f1c7c] inline-flex mt-4 text-white rounded-lg cursor-pointer hover:shadow-md w-full sm:w-auto"
-    >
-      <div
-        class="flex justify-center items-center p-2 rounded-l-lg bg-[rgba(0,0,0,0.4)]"
-      >
-        <img class="m-1" width={48} src="/elgato.webp" />
-      </div>
-      <div class="flex flex-col justify-center p-2 pl-4">
-        <span class="font-medium">Install the plugin</span>
-        <span class="block opacity-50 mr-4">com.dim.streamdeck</span>
-      </div>
-    </a>
+<div class="flex flex-col lg:flex-row justify-between gap-8 my-4">
+  <div class="flex-1">
+    <YouTube
+      id="IhdmWmDJwlQ"
+      poster="https://i3.ytimg.com/vi/IhdmWmDJwlQ/maxresdefault.jpg"
+    />
   </div>
-</div>
-<div class="flex flex-col lg:flex-row justify-between">
   <div class="flex-1">
     {
       items.map((item, index) => (
@@ -43,16 +31,25 @@ const items = [
               {index + 1}) <span set:html={item[0]} />
             </div>
           </div>
+          {index === 0 && (
+            <a
+              href="https://marketplace.elgato.com/product/dim-stream-deck-11883ba5-c8db-4e3a-915f-612c5ba1b2e4"
+              target="_blank"
+              class="bg-[#0f1c7c] inline-flex mb-4 text-white rounded-lg cursor-pointer hover:shadow-md w-full sm:w-auto"
+            >
+              <div class="flex justify-center items-center p-2 rounded-l-lg bg-[rgba(0,0,0,0.4)]">
+                <img class="m-1" width={48} src="/elgato.webp" />
+              </div>
+              <div class="flex flex-col justify-center p-2 pl-4">
+                <span class="font-medium">Install the plugin</span>
+                <span class="block opacity-50 mr-4">com.dim.streamdeck</span>
+              </div>
+            </a>
+          )}
           <div class="bg-white h-0.5 opacity-10 w-full" />
         </>
       ))
     }
-  </div>
-  <div class="flex-1 flex mt-4 mb-4 lg:mt-0 lg:ml-8">
-    <YouTube
-      id="ph32r0P5pHY"
-      poster="https://i.ytimg.com/vi/ph32r0P5pHY/maxresdefault.jpg"
-    />
   </div>
 </div>
 

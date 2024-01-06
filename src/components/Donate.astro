@@ -1,5 +1,5 @@
 ---
-import { URLSearchParams } from "url";
+import queryString from "query-string";
 
 interface Patron {
   name: string;
@@ -7,24 +7,26 @@ interface Patron {
 }
 
 const headers = {
-  Authorization: "Bearer " + process.env.PATREON_TOKEN,
+  Authorization: `Bearer ${import.meta.env.PATREON_TOKEN}`,
 };
 
-const fields = new URLSearchParams({
+const fields = queryString.stringify({
   include: ["currently_entitled_tiers"],
   "fields[member]": ["full_name", "patron_status"],
   "fields[tier]": ["title"],
 });
 
 const usersRes = await fetch(
-  `https://www.patreon.com/api/oauth2/v2/campaigns/${process.env.PATREON_ID}/members?${fields}`,
-  { headers },
+  `https://www.patreon.com/api/oauth2/v2/campaigns/${
+    import.meta.env.PATREON_ID
+  }/members?${fields}`,
+  { headers }
 );
 
-const { data, included } = await usersRes.json();
+const { data = [], included = [] } = await usersRes.json();
 
 const tiers = Object.fromEntries(
-  included.map((it: any) => [it.id, it.attributes.title]),
+  included.map((it: any) => [it.id, it.attributes.title])
 );
 
 const sorting = ["8787051", "8933196", "8787043", undefined];
@@ -34,19 +36,19 @@ const patrons: Patron[] = data
     name: it.attributes.full_name,
     tier: it.relationships.currently_entitled_tiers.data[0]?.id,
   }))
-  .filter((it: Patron) => it.tier !== "free");
+  .filter((it: Patron) => !it.tier || tiers[it.tier] !== "Free");
 
 patrons.sort((a, b) =>
-  sorting.indexOf(a.tier) > sorting.indexOf(b.tier) ? 1 : -1,
+  sorting.indexOf(a.tier) > sorting.indexOf(b.tier) ? 1 : -1
 );
 ---
 
-<h4 class="mb-4 text-6xl font-medium text-center md:text-left">Donate</h4>
+<h4 class="mb-4 text-5xl font-medium text-center md:text-left">Donate</h4>
 <div
   class="flex justify-evenly md:justify-start md:gap-4 shadow-sm pb-4 flex-col sm:flex-row gap-y-3"
 >
   <a
-    href={process.env.PATREON}
+    href={import.meta.env.PATREON}
     target="_blank"
     class="bg-[#f96854] rounded-lg text-white flex items-center"
   >
@@ -58,7 +60,7 @@ patrons.sort((a, b) =>
     </span>
   </a>
   <a
-    href={process.env.KOFI}
+    href={import.meta.env.KOFI}
     target="_blank"
     class="bg-[#13C3FF] rounded-lg text-white flex items-center"
   >
@@ -71,7 +73,7 @@ patrons.sort((a, b) =>
   </a>
 </div>
 
-<h4 class="mb-2 mb-6 text-6xl font-medium text-center md:text-left">
+<h4 class="mb-2 mb-6 text-5xl font-medium text-center md:text-left">
   Supporters :)
 </h4>
 

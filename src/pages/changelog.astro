@@ -3,6 +3,20 @@ import Layout from "../layouts/Layout.astro";
 
 const changes = [
   {
+    version: "3.0.0",
+    date: "January 2024",
+    changes: [
+      "support of 6.5 Stream Deck Application",
+      "new setup/status (<a  target='_blank' href='https://github.com/dim-stream-deck/com.dim.streamdeck/wiki/Status'>wiki</a>)",
+      "new Node.js plugin",
+      "solo-mode action (new) (<a  target='_blank' href='https://github.com/dim-stream-deck/com.dim.streamdeck/wiki/Solo-Mode-(Action)'>wiki</a>)",
+      "checkpoint action (new)",
+      "item/loadout actions (new selection) (<a  target='_blank' href='https://github.com/dim-stream-deck/com.dim.streamdeck/wiki/Item-&-Loadout-selection'>wiki</a>)",
+      "tap to cycle states in vault/metrics actions",
+      "item action (updated icons/overlay)",
+    ],
+  },
+  {
     version: "2.0.0",
     date: "December 2022",
     changes: [
@@ -16,10 +30,10 @@ const changes = [
 ];
 ---
 
-<Layout path="changelog">
+<Layout>
   <main class="sm:container sm:mx-auto mx-4 mt-8">
-    <h4 class="mb-4 text-6xl pb-2 font-medium">Changelog</h4>
-    <div>
+    <h4 class="mb-4 text-5xl pb-2 font-medium">Changelog</h4>
+    <div class="changelog">
       {
         changes.map((change) => (
           <div>
